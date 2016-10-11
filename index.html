@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Ddos-info-sharing : The repository for the CRITS based DDoS Information Sharing platform">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ddos-info-sharing</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cablelabs/ddos-info-sharing">View on GitHub</a>
+
+          <h1 id="project_title">Ddos-info-sharing</h1>
+          <h2 id="project_tagline">The repository for the CRITS based DDoS Information Sharing platform</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cablelabs/ddos-info-sharing/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cablelabs/ddos-info-sharing/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a id="crits-background" class="anchor" href="#crits-background" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CRITS Background.</h2>
+
+<p><a href="https://github.com/crits/crits">CRITS</a> (<a href="https://crits.github.io/">Collaborative Research Into Threats</a>) is an open source project that provides a unified tool for analytics and collaborative engagement in threat defense. The CRITS platform is implemented in the form of the core CRITS system that provides various TLO's (Top Level Objects) and a web interface to administer and manage users, sources and visibility into the data. CRTIS also provides a system of addon services to extend CRITS. A CRITS service is a plugin that among other things can:</p>
+
+<ul>
+<li>extend CRITS functionality</li>
+<li>allow CRITS to interact/communicate with external entities</li>
+<li>perform analytics, data-mining and reports generation</li>
+</ul>
+
+<h2>
+<a id="extending-crits-for-ddos-information-sharing" class="anchor" href="#extending-crits-for-ddos-information-sharing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extending CRITS for DDoS Information Sharing</h2>
+
+<p>(put diagram here)
+The diagram above shows the proposed architecture for a CRITS based trusted DDoS Information Sharing system. It adds three modules to the CRITS system:</p>
+
+<h3>
+<a id="data-ingest-services" class="anchor" href="#data-ingest-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Ingest Services</h3>
+
+<p>The DIS component is a set of CRITS services that allows each authorized ISP connecting to the trusted system to incrementally upload new DDoS data to the system. The DIS component authenticates the connection from an ISP (using X.509 Certificates), establishes a secure tunnel, verifies the source of the data, parses and validates the data, associates the data with the origin source and stores it for the DAS component to process it. Given that multiple ISP's are expected to connect to this system, it is likely that the data exported/uploaded by various ISP's will be in different formats. the DIS component is expected to normalize the ingested data. Currently only JSON/JSON-Schema based data formats are supported.</p>
+
+<h3>
+<a id="data-analytics-services" class="anchor" href="#data-analytics-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Analytics Services</h3>
+
+<p>The DAS component is a set of CRITS services that analyses/processes the data and data streams and report streams that are then shared with the ISP's based on the access restrictions and privacy constraints. At the very least, the DAS currently processes the data provided by the DIS and updates existing measurement points, segregates the data based on the origin of the data and the owner of the AS associated with the threat information. It assigns access control to the data stream so that only the origin of the data and the AS associated with the threat information can see/access the information. However it is possible to add new analytics services within the DAS module like:</p>
+
+<ul>
+<li>Type of attack</li>
+<li>AS Mapping/Verification</li>
+<li>Update attack counts</li>
+<li>Source verification - direct vs reflective</li>
+<li>Verify serice - DNS, NTP, SSDP, SNMP etc
+### Data Distribution Service
+The DDS component is a set of CRITS services that hosts the analyzed and shared data amongst ISP's based on the access restrictions and ownership of the data. It will host a set of web-services to which various ISP's can securely connect, and after authentication (using X.509 Certificates), be able to download threat information relevant to their AS.</li>
+</ul>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Ddos-info-sharing maintained by <a href="https://github.com/cablelabs">cablelabs</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
