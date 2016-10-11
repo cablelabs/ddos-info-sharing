@@ -1,0 +1,21 @@
+{
+  "ProviderName": "Comcast",
+  "ProviderASN": 20381,
+  "dis-data": [
+    {
+      "IPaddress": "96.41.170.252",
+      "VendorId": 1,
+      "FirstSeen": "2016-03-28T04:53:45Z",
+      "LastSeen": "2016-05-14T02:19:44Z",
+      "NumberOfTimes": 19,
+      "City": "Newport",
+      "State": "OR",
+      "Country": "US",
+      "TotalBPS": 45771024,
+      "TotalPPS": 5114,
+      "SourceASN": 20381,
+      "Type": "ddos",
+      "AlertType": "Total Traffic"
+    }
+  ]
+}

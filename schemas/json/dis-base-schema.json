@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://infosharing.cablelabs.com/schemas/dis/dis-base-schema.json",
+  "title": "Proposed Schema for the DDoS Info Sharing Project",
+  "definitions": {
+    "dis-data": {
+      "type": "object",
+      "properties": {
+        "IPaddress": {
+          "type": "string",
+          "format": "ipv4",
+          "description": "The source of the DDoS attack packet"
+        },
+        "FirstSeen": {
+          "type": "string",
+          "format": "date-time",
+          "description": "RFC 3339 formatted time stamp when the attacker info was first tracked"
+        },
+        "LastSeen": {
+          "type": "string",
+          "format": "date-time",
+          "description": "RFC 3339 formatted time stamp when the attacker info was last tracked"
+        },
+        "NumberOfTimes": {
+          "type": "integer",
+          "description": "The number represents the count of the attacks from the specific IP Address"
+        },
+        "City": {
+          "type": "string",
+          "description": "The location of the IP Address based on geo IP info"
+        },
+        "State": {
+          "type": "string",
+          "description": "The location of the IP Address based on geo IP info"
+        },
+        "Country": {
+          "type": "string",
+          "description": "The country associated with the IP Address, formatted as an ISO alpha-2 code"
+        },
+        "TotalBPS": {
+          "type": "integer",
+          "description": "Value represents the volume of traffic in bytes per second"
+        },
+        "TotalPPS": {
+          "type": "integer",
+          "description": "Value represents the volume of traffic in packets per second"
+        },
+        "SourceASN": {
+          "type": "integer",
+          "description": "The AS Number of the network owner from where the attack traffic is coming"
+        },
+        "AttackType": {
+          "type": "string",
+          "description": "The type of attack"
+        },
+        "AlertType": {
+          "type": "string",
+          "description": "The alerts raised/issued associated with the attack"
+        }
+      },
+      "required": [ "IPaddress", "FirstSeen", "LastSeen", "SourceASN" ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "ProviderName": {
+      "type": "string",
+      "description": "The name of the operator providing the data"
+    },
+    "ProviderASN": {
+      "type": "integer",
+      "description": "The AS Number of the operator providing the data"
+    },
+    "dis-data": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/dis-data"
+      }
+    }
+  },
+  "required": [ "ProviderASN" ]
+}
