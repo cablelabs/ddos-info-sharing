@@ -64,10 +64,21 @@
 <li>AS Mapping/Verification</li>
 <li>Update attack counts</li>
 <li>Source verification - direct vs reflective</li>
-<li>Verify serice - DNS, NTP, SSDP, SNMP etc
-### Data Distribution Service
-The DDS component is a set of CRITS services that hosts the analyzed and shared data amongst ISP's based on the access restrictions and ownership of the data. It will host a set of web-services to which various ISP's can securely connect, and after authentication (using X.509 Certificates), be able to download threat information relevant to their AS.</li>
+<li>Verify serice - DNS, NTP, SSDP, SNMP etc.</li>
 </ul>
+
+<h3>
+<a id="data-distribution-service" class="anchor" href="#data-distribution-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Distribution Service</h3>
+
+<p>The DDS component is a set of CRITS services that hosts the analyzed and shared data amongst ISP's based on the access restrictions and ownership of the data. It will host a set of web-services to which various ISP's can securely connect, and after authentication (using X.509 Certificates), be able to download threat information relevant to their AS.</p>
+
+<h4>
+<a id="ddos-informatin-data-format" class="anchor" href="#ddos-informatin-data-format" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DDoS Informatin Data Format</h4>
+
+<p>The first step in sharing the DDoS information is specifying the syntax and semantics of the data being shared. In order for the analytics component to generate meaningful information, all the data shared from various providers must include a minimal set of attributes that characterize the DDoS data. Given the popularity of JSON and based on feedback we have received, we have chosen JSON as the primary format for sharing the data. We may look into supporting additional formats in the future. We use <a href="http://json-schema.org">JSON Schemas</a> to specify the semantics of the data.</p>
+
+<p>The initial draft of the JSON Schema for the basic DDoS IP information is <a href="schema%20for%20data%20ingest">https://github.com/cablelabs/ddos-info-sharing/blob/master/schemas/json/dis-base-schema.json</a>.
+Note that this is subject to rapid change based on development and feedback from the participants</p>
       </section>
     </div>
 
