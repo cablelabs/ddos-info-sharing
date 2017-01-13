@@ -4,7 +4,6 @@
   "dis-data": [
     {
       "IPaddress": "96.41.170.252",
-      "VendorId": 1,
       "FirstSeen": "2016-03-28T04:53:45Z",
       "LastSeen": "2016-05-14T02:19:44Z",
       "NumberOfTimes": 19,
@@ -14,8 +13,8 @@
       "TotalBPS": 45771024,
       "TotalPPS": 5114,
       "SourceASN": 20381,
-      "Type": "ddos",
-      "AlertType": "Total Traffic"
+      "AttackType": "ddos",
+      "Extra": "Total Traffic"
     }
   ]
 }

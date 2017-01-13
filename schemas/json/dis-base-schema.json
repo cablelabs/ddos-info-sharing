@@ -7,9 +7,17 @@
       "type": "object",
       "properties": {
         "IPaddress": {
-          "type": "string",
-          "format": "ipv4",
-          "description": "The source of the DDoS attack packet"
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "ipv4"
+            },
+            {
+              "type": "string",
+              "format": "ipv6"
+            }
+          ],
+          "description": "The source of the DDoS attack packet. IPv4 or IPv6"
         },
         "FirstSeen": {
           "type": "string",
@@ -39,11 +47,11 @@
         },
         "TotalBPS": {
           "type": "integer",
-          "description": "Value represents the volume of traffic in bytes per second"
+          "description": "Value represents the volume of traffic in bytes per second sent during this attack"
         },
         "TotalPPS": {
           "type": "integer",
-          "description": "Value represents the volume of traffic in packets per second"
+          "description": "Value represents the volume of traffic in packets per second sent during this attack"
         },
         "SourceASN": {
           "type": "integer",
@@ -51,14 +59,22 @@
         },
         "AttackType": {
           "type": "string",
-          "description": "The type of attack"
+          "description": "Information about the type of attack"
         },
-        "AlertType": {
+        "Extra": {
           "type": "string",
-          "description": "The alerts raised/issued associated with the attack"
+          "description": "Additional info about the source"
+        },
+        "SourcePort": {
+          "type": "integer",
+          "description": "The port number from which the traffic is coming"
+        },
+        "DestPort": {
+          "type": "integer",
+          "description": "The port number to which the traffic is directed. This helps in determining the protocol"
         }
       },
-      "required": [ "IPaddress", "FirstSeen", "LastSeen", "SourceASN" ]
+      "required": [ "IPaddress" ]
     }
   },
   "type": "object",
@@ -80,5 +96,5 @@
       }
     }
   },
-  "required": [ "ProviderASN" ]
+  "required": [ "ProviderName" ]
 }
