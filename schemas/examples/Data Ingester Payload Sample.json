@@ -1,0 +1,73 @@
+{
+    "ProviderName": "CableLabs",
+    "dis-data":
+    [
+	    {
+		    "IPaddress": "5.7.3.8",
+        "events": [
+            {
+              "timestamp": "2015-08-17T15:54:11Z",
+              "attackTypes": [
+                  "DNS",
+                  "SSDP Amplification",
+                  "Total Traffic"
+              ],
+              "totalBytesSent": 22248441867,
+              "totalPacketsSent": 5976297,
+              "peakBPS": 943756,
+              "peakPPS": 85769,
+              "sourcePort": 24355,
+              "destinationPort": 5934,
+              "protocol": "UDP"
+            },
+            {
+              "timestamp": "2017-12-17T23:54:11Z",
+              "attackTypes": [
+                  "chargen Amplification",
+                  "UDP"
+              ],
+              "totalBytesSent": 22248441867,
+              "totalPacketsSent": 5976297,
+              "peakBPS": 943756,
+              "peakPPS": 85769,
+              "sourcePort": 4359,
+              "destinationPort": 23984,
+              "protocol": "UDP"
+            }
+        ]
+		},
+		{
+		    "IPaddress": "fd0c:eea1:601e::",
+        "events": [
+            {
+              "timestamp": "2015-08-17T22:35:49Z",
+              "attackTypes": [
+                  "DNS Amplification",
+                  "TCP RST"
+              ],
+              "totalBytesSent": 12966108956,
+              "totalPacketsSent": 3500648,
+              "peakBPS": 1715682,
+              "peakPPS": 56416,
+              "sourcePort": 36567,
+              "destinationPort": 29843,
+              "protocol": "UDP"
+            },
+            {
+              "timestamp": "2016-05-17T05:54:11Z",
+              "attackTypes": [
+                  "ICMP",
+                  "TCP NULL"
+              ],
+              "totalBytesSent": 384734356416,
+              "totalPacketsSent": 534153,
+              "peakBPS": 6817843,
+              "peakPPS": 776466,
+              "sourcePort": 4354,
+              "destinationPort": 59486,
+              "protocol": "UDP"
+            }
+        ]
+		}
+	]
+}
