@@ -35,7 +35,7 @@
                     "items": { "$ref": "#/definitions/events" }
                 }
             },
-            "required": [ "IPaddress", "event" ]
+            "required": [ "IPaddress", "events" ]
         },
         "event": {
             "timestamp": {
