@@ -1,0 +1,100 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://infosharing.cablelabs.com/schemas/dis/dis-base-schema.json",
+    "title": "Proposed Schema for the DDoS Info Sharing Project, for the input to the data ingester service.",
+    "type": "object",
+    "required": [ "ProviderName", "dis-data" ],
+    "properties": {
+        "ProviderName": {
+            "type": "string",
+            "description": "The name of the organization of the user submitting data."
+        },
+        "dis-data": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "#/definitions/dis-data" }
+        }
+    },
+    "definitions": {
+        "dis-data": {
+            "type": "object",
+            "properties": {
+                "IPaddress": {
+                    "type": "string",
+                    "oneOf": [
+                        { "format": "ipv4" },
+                        { "format": "ipv6" }
+                    ],
+                    "description": "The source of the DDoS attack packets."
+                },
+                "events": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/definitions/events" }
+                }
+            },
+            "required": [ "IPaddress", "event" ]
+        },
+        "event": {
+            "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "RFC 3339 formatted time stamp at which this particular event started."
+            },
+            "attackTypes": {
+                "type": "array",
+                "minItems": 1,
+                "description": "The type(s) of attack(s) at the time of this event.",
+                "items": {
+                    "type": {
+                        "enum": [
+                            "chargen Amplification",
+                            "DNS",
+                            "DNS Amplification",
+                            "IP Fragmentation",
+                            "ICMP",
+                            "NTP Amplification",
+                            "SSDP Amplification",
+                            "TCP NULL",
+                            "TCP RST",
+                            "TCP SYN",
+                            "Total Traffic",
+                            "UDP"
+                        ]
+                    }
+                }
+            },
+            "totalBytesSent": {
+                "type": "integer",
+                "description": "The total volume of traffic, measured in bytes."
+            },
+            "totalPacketsSent": {
+                "type": "integer",
+                "description": "The total volume of traffic, measured in packets."
+            },
+            "peakBPS": {
+                "type": "integer",
+                "description": "The maximum traffic during this event in bytes per second."
+            },
+            "peakPPS": {
+                "type": "integer",
+                "description": "The maximum traffic during this event in packets per second."
+            },
+            "sourcePort": {
+                "type": "integer",
+                "description": "The source port used for the attack."
+            },
+            "destinationPort": {
+                "type": "integer",
+                "description": "The destination port used for the attack."
+            },
+            "protocol": {
+                "type": "string",
+                "description": "The protocol used for the attack."
+            },
+            "required": [ "timestamp" ]
+        }
+    }
+}
