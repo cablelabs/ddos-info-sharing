@@ -1,54 +1,49 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://infosharing.cablelabs.com/schemas/dis/dis-base-schema.json",
     "title": "Proposed Schema for the DDoS Info Sharing Project, for the input to the data ingester service.",
     "type": "object",
-    "required": [ "ProviderName", "dis-data" ],
     "properties": {
         "ProviderName": {
-            "type": "string",
-            "description": "The name of the organization of the user submitting data."
+            "description": "The name of the organization of the user submitting data.",
+            "type": "string"
         },
-        "dis-data": {
+        "ingestData": {
+            "description": "A list of one or more objects describing DDoS attacks from individial IP addresses.",
             "type": "array",
+            "items": { "$ref": "#/definitions/ingestData" },
             "minItems": 1,
-            "uniqueItems": true,
-            "items": { "$ref": "#/definitions/dis-data" }
+            "uniqueItems": true
         }
     },
+    "required": [ "ProviderName", "ingestData" ],
     "definitions": {
-        "dis-data": {
+        "ingestData": {
+            "description": "An object with information about a DDoS attack event from a single IP address.",
             "type": "object",
             "properties": {
                 "IPaddress": {
+                    "description": "The IP address that was the source of the DDoS attack packets.",
                     "type": "string",
                     "oneOf": [
                         { "format": "ipv4" },
                         { "format": "ipv6" }
-                    ],
-                    "description": "The source of the DDoS attack packets."
+                    ]
                 },
-                "events": {
+                "attackStartTime": {
+                    "description": "RFC 3339 formatted timestamp, indicating when the attack from this IP address started.",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "attackStopTime": {
+                    "description": "RFC 3339 formatted timestamp, indicating when the attack from this IP address ended.",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "attackTypes": {
+                    "description": "The type(s) of attack(s) that came from this IP address.",
                     "type": "array",
-                    "minItems": 1,
-                    "uniqueItems": true,
-                    "items": { "$ref": "#/definitions/events" }
-                }
-            },
-            "required": [ "IPaddress", "events" ]
-        },
-        "event": {
-            "timestamp": {
-                "type": "string",
-                "format": "date-time",
-                "description": "RFC 3339 formatted time stamp at which this particular event started."
-            },
-            "attackTypes": {
-                "type": "array",
-                "minItems": 1,
-                "description": "The type(s) of attack(s) at the time of this event.",
-                "items": {
-                    "type": {
+                    "items": {
+                        "type": "string",
                         "enum": [
                             "chargen Amplification",
                             "DNS",
@@ -63,38 +58,39 @@
                             "Total Traffic",
                             "UDP"
                         ]
-                    }
+                    },
+                    "minItems": 1
+                },
+                "totalBytesSent": {
+                    "description": "The total number of bytes that came from this IP during the attack.",
+                    "type": "integer"
+                },
+                "totalPacketsSent": {
+                    "description": "The total number of packets that came from this IP during the attack.",
+                    "type": "integer"
+                },
+                "peakBPS": {
+                    "description": "The maximum rate of bytes that came from this IP, measured in bytes per second.",
+                    "type": "integer"
+                },
+                "peakPPS": {
+                    "description": "The maximum rate of packets that came from this IP, measured in packets per second.",
+                    "type": "integer"
+                },
+                "sourcePort": {
+                    "description": "The source port used for the attack.",
+                    "type": "integer"
+                },
+                "destinationPort": {
+                    "description": "The destination port used for the attack.",
+                    "type": "integer"
+                },
+                "protocol": {
+                    "description": "The protocol used for the attack.",
+                    "type": "string"
                 }
             },
-            "totalBytesSent": {
-                "type": "integer",
-                "description": "The total volume of traffic, measured in bytes."
-            },
-            "totalPacketsSent": {
-                "type": "integer",
-                "description": "The total volume of traffic, measured in packets."
-            },
-            "peakBPS": {
-                "type": "integer",
-                "description": "The maximum traffic during this event in bytes per second."
-            },
-            "peakPPS": {
-                "type": "integer",
-                "description": "The maximum traffic during this event in packets per second."
-            },
-            "sourcePort": {
-                "type": "integer",
-                "description": "The source port used for the attack."
-            },
-            "destinationPort": {
-                "type": "integer",
-                "description": "The destination port used for the attack."
-            },
-            "protocol": {
-                "type": "string",
-                "description": "The protocol used for the attack."
-            },
-            "required": [ "timestamp" ]
+            "required": [ "IPaddress" ]
         }
     }
 }
