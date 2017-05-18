@@ -1,0 +1,109 @@
+{
+    "SourceName": "CableLabs",
+    "outputData":
+    [
+	    {
+		    "IPaddress": "5.7.3.8",
+        "lastTimeReceived": "2017-12-19T00:54:11.0Z",
+        "numberOfTimesSeen": 1118,
+        "numberOfReporters": 10,
+        "reportedBy": [
+            "Comcast",
+            "Charter"
+        ],
+        "City": "Worcester",
+        "State": "MA",
+        "Country": "US",
+        "Latitude": 51.2993,
+        "Longitude": 9.4910,
+        "totalbytesSent": 44496883734,
+        "totalPacketsSent": 11952594,
+        "events": [
+            {
+              "attackStartTime": "2015-08-17T15:54:11.0Z",
+              "attackStopTime": "2015-08-18T15:54:11.0Z",
+              "timeRecorded": "2015-08-18T20:54:11.0Z",
+              "attackTypes": [
+                  "DNS",
+                  "SSDP Amplification",
+                  "Total Traffic"
+              ],
+              "totalBytesSent": 22248441867,
+              "totalPacketsSent": 5976297,
+              "peakBPS": 943756,
+              "peakPPS": 85769,
+              "sourcePort": 24355,
+              "destinationPort": 5934,
+              "protocol": "UDP"
+            },
+            {
+              "attackStartTime": "2017-12-17T23:54:11.0Z",
+              "attackStopTime": "2017-12-18T23:54:11.0Z",
+              "timeRecorded": "2017-12-19T00:54:11.0Z",
+              "attackTypes": [
+                  "chargen Amplification",
+                  "UDP"
+              ],
+              "totalBytesSent": 22248441867,
+              "totalPacketsSent": 5976297,
+              "peakBPS": 943756,
+              "peakPPS": 85769,
+              "sourcePort": 4359,
+              "destinationPort": 23984,
+              "protocol": "UDP"
+            }
+        ]
+		},
+		{
+		    "IPaddress": "fdb3:e539:2f1e::",
+        "lastTimeReceived": "2016-05-18T23:54:11Z",
+        "numberOfTimesSeen": 872,
+        "numberOfReporters": 3,
+        "reportedBy": [
+            "CenturyLink",
+            "Liberty Global, Inc."
+        ],
+        "City": "Mountain View",
+        "State": "CA",
+        "Country": "US",
+        "Latitude": 37.3860,
+        "Longitude": -122.0840,
+        "totalbytesSent": 397700465372,
+        "totalPacketsSent": 4034801,
+        "events": [
+            {
+              "attackStartTime": "2015-08-17T22:35:49Z",
+              "attackStopTime": "2015-08-18T22:35:49Z",
+              "timeRecorded": "2015-08-19T03:35:49Z",
+              "attackTypes": [
+                  "DNS Amplification",
+                  "TCP RST"
+              ],
+              "totalBytesSent": 12966108956,
+              "totalPacketsSent": 3500648,
+              "peakBPS": 1715682,
+              "peakPPS": 56416,
+              "sourcePort": 36567,
+              "destinationPort": 29843,
+              "protocol": "UDP"
+            },
+            {
+              "attackStartTime": "2016-05-17T05:54:11Z",
+              "attackStopTime": "2016-05-18T05:54:11Z",
+              "timeRecorded": "2016-05-18T23:54:11Z",
+              "attackTypes": [
+                  "ICMP",
+                  "TCP NULL"
+              ],
+              "totalBytesSent": 384734356416,
+              "totalPacketsSent": 534153,
+              "peakBPS": 6817843,
+              "peakPPS": 776466,
+              "sourcePort": 4354,
+              "destinationPort": 59486,
+              "protocol": "UDP"
+            }
+        ]
+		}
+	]
+}

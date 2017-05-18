@@ -1,0 +1,165 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Proposed Schema for the DDoS Info Sharing Project, for the output of the data distribution service.",
+    "type": "object",
+    "properties": {
+        "SourceName": {
+            "description": "The name of the organization of the user requesting data.",
+            "type": "string"
+        },
+        "outputData": {
+            "description": "A list of one or more objects describing attacks from individial IP addresses.",
+            "type": "array",
+            "items": { "$ref": "#/definitions/outputData" },
+            "minItems": 0,
+            "uniqueItems": true
+        }
+    },
+    "required": [ "SourceName", "outputData" ],
+    "definitions": {
+        "outputData": {
+            "description": "An object with information about a DDoS attack from a single IP address.",
+            "type": "object",
+            "properties": {
+                "IPaddress": {
+                    "description": "The IP address that was the source of the DDoS attack packets.",
+                    "type": "string",
+                    "oneOf": [
+                        { "format": "ipv4" },
+                        { "format": "ipv6" }
+                    ]
+                },
+                "lastTimeReceived": {
+                    "description": "RFC 3339 formatted timestamp, indicating the last time CRITs received information about this IP address.",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "numberOfTimesSeen": {
+                    "description": "The number of times that the IP address has been reported to CRITs by one or more ISPs.",
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "numberOfReporters": {
+                    "description": "The number of ISPs who have reported this IP address.",
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "reportedBy": {
+                    "description": "A list of ISPs who have reported this IP address and have chosen to disclose that they reported this IP.",
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "City": {
+                    "description": "The city associated with the IP Address based on geo IP info.",
+                    "type": "string"
+                },
+                "State": {
+                    "description": "The state associated with the IP Address based on geo IP info.",
+                    "type": "string"
+                },
+                "Country": {
+                    "description": "The country associated with the IP Address based on geo IP info, formatted as an ISO alpha-2 code.",
+                    "type": "string"
+                },
+                "Latitude": {
+                    "description": "The latitude of the IP address based on geo IP info.",
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90
+                },
+                "Longitude": {
+                    "description": "The longitude of the IP address based on geo IP info.",
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180
+                },
+                "totalBytesSent": {
+                    "description": "The total number of bytes sent by this IP address among all events.",
+                    "type": "integer"
+                },
+                "totalPacketsSent": {
+                    "description": "The total number of packets sent by this IP address among all events.",
+                    "type": "integer"
+                },
+                "events": {
+                    "description": "A list of attack events that originated from this IP address.",
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/event" },
+                    "minItems": 1,
+                    "uniqueItems": true
+                }
+            },
+            "required": [ "IPaddress", "numberOfTimesSeen", "numberOfReporters", "events" ]
+        },
+        "event": {
+            "description": "A single attack event.",
+            "type": "object",
+            "properties": {
+                "attackStartTime": {
+                    "description": "RFC 3339 formatted timestamp, indicating when this attack event started.",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "attackStopTime": {
+                    "description": "RFC 3339 formatted timestamp, indicating when this attack event ended.",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "timeRecorded": {
+                    "description": "RFC 3339 formatted timestamp, indicating the time CRITs received information for this event.",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "attackTypes": {
+                    "description": "The type(s) of attack(s) at the time of this event.",
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "chargen Amplification",
+                            "DNS",
+                            "DNS Amplification",
+                            "IP Fragmentation",
+                            "ICMP",
+                            "NTP Amplification",
+                            "SSDP Amplification",
+                            "TCP NULL",
+                            "TCP RST",
+                            "TCP SYN",
+                            "Total Traffic",
+                            "UDP"
+                        ]
+                    }
+                },
+                "totalBytesSent": {
+                    "description": "The total number of bytes that came during this event.",
+                    "type": "integer"
+                },
+                "totalPacketsSent": {
+                    "description": "The total number of packets that came during this event.",
+                    "type": "integer"
+                },
+                "peakBPS": {
+                    "description": "The maximum rate of bytes that came during this event, measured in bytes per second.",
+                    "type": "integer"
+                },
+                "peakPPS": {
+                    "description": "The maximum rate of packets that came during this event, measured in packets per second.",
+                    "type": "integer"
+                },
+                "sourcePort": {
+                    "description": "The source port used for the attack.",
+                    "type": "integer"
+                },
+                "destinationPort": {
+                    "description": "The destination port used for the attack.",
+                    "type": "integer"
+                },
+                "protocol": {
+                    "description": "The protocol used for the attack.",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
