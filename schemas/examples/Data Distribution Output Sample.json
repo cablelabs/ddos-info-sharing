@@ -68,7 +68,7 @@
         "Country": "US",
         "Latitude": 37.3860,
         "Longitude": -122.0840,
-        "totalbytesSent": 397700465372,
+        "totalBytesSent": 397700465372,
         "totalPacketsSent": 4034801,
         "events": [
             {
