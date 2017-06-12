@@ -10,14 +10,14 @@
         "outputData": {
             "description": "A list of one or more objects describing attacks from individial IP addresses.",
             "type": "array",
-            "items": { "$ref": "#/definitions/outputData" },
+            "items": { "$ref": "#/definitions/outputDataItem" },
             "minItems": 0,
             "uniqueItems": true
         }
     },
     "required": [ "SourceName", "outputData" ],
     "definitions": {
-        "outputData": {
+        "outputDataItem": {
             "description": "An object with information about a DDoS attack from a single IP address.",
             "type": "object",
             "properties": {
@@ -89,7 +89,7 @@
                     "uniqueItems": true
                 }
             },
-            "required": [ "IPaddress", "numberOfTimesSeen", "numberOfReporters", "events" ]
+            "required": [ "IPaddress", "lastTimeReceived", "numberOfTimesSeen", "numberOfReporters", "reportedBy", "events" ]
         },
         "event": {
             "description": "A single attack event.",

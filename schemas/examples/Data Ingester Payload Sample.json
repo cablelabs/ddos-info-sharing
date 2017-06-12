@@ -1,39 +1,38 @@
 {
-    "ProviderName": "CableLabs",
-    "ingestData":
-    [
-	    {
-		    "IPaddress": "5.7.3.8",
-        "attackStartTime": "2015-08-17T15:54:11.0Z",
-        "attackStopTime": "2015-08-18T15:54:11.0Z",
-        "attackTypes": [
-            "DNS",
-            "SSDP Amplification",
-            "Total Traffic"
-        ],
-        "totalBytesSent": 22248441867,
-        "totalPacketsSent": 5976297,
-        "peakBPS": 943756,
-        "peakPPS": 85769,
-        "sourcePort": 24355,
-        "destinationPort": 5934,
-        "protocol": "UDP"
-		},
-		{
-		    "IPaddress": "fd0c:eea1:601e::",
-        "attackStartTime": "2015-08-17T22:35:49.0Z",
-        "attackStopTime": "2015-08-18T22:35:49.0Z",
-        "attackTypes": [
-            "DNS Amplification",
-            "TCP RST"
-        ],
-        "totalBytesSent": 12966108956,
-        "totalPacketsSent": 3500648,
-        "peakBPS": 1715682,
-        "peakPPS": 56416,
-        "sourcePort": 36567,
-        "destinationPort": 29843,
-        "protocol": "UDP"
-		}
-	]
+  "ProviderName": "CableLabs",
+  "ingestData": [
+    {
+      "IPaddress": "5.7.3.8",
+      "attackStartTime": "2015-08-17T15:54:11.0Z",
+      "attackStopTime": "2015-08-18T15:54:11.0Z",
+      "attackTypes": [
+        "DNS",
+        "SSDP Amplification",
+        "Total Traffic"
+      ],
+      "totalBytesSent": 22248441867,
+      "totalPacketsSent": 5976297,
+      "peakBPS": 943756,
+      "peakPPS": 85769,
+      "sourcePort": 24355,
+      "destinationPort": 5934,
+      "protocol": "UDP"
+    },
+    {
+      "IPaddress": "fd0c:eea1:601e::",
+      "attackStartTime": "2015-08-17T22:35:49.0Z",
+      "attackStopTime": "2015-08-18T22:35:49.0Z",
+      "attackTypes": [
+        "DNS Amplification",
+        "TCP RST"
+      ],
+      "totalBytesSent": 12966108956,
+      "totalPacketsSent": 3500648,
+      "peakBPS": 1715682,
+      "peakPPS": 56416,
+      "sourcePort": 36567,
+      "destinationPort": 29843,
+      "protocol": "UDP"
+    }
+  ]
 }

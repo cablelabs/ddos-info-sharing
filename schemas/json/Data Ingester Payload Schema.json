@@ -10,14 +10,14 @@
         "ingestData": {
             "description": "A list of one or more objects describing DDoS attacks from individial IP addresses.",
             "type": "array",
-            "items": { "$ref": "#/definitions/ingestData" },
+            "items": { "$ref": "#/definitions/ingestDataItem" },
             "minItems": 1,
             "uniqueItems": true
         }
     },
     "required": [ "ProviderName", "ingestData" ],
     "definitions": {
-        "ingestData": {
+        "ingestDataItem": {
             "description": "An object with information about a DDoS attack event from a single IP address.",
             "type": "object",
             "properties": {
@@ -49,8 +49,11 @@
                             "DNS",
                             "DNS Amplification",
                             "IP Fragmentation",
+                            "IP Private",
                             "ICMP",
+                            "MS SQL RS Amplification",
                             "NTP Amplification",
+                            "SNMP Amplification",
                             "SSDP Amplification",
                             "TCP NULL",
                             "TCP RST",
