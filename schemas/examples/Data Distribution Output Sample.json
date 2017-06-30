@@ -16,6 +16,8 @@
       "Longitude": 9.4910,
       "totalBytesSent": 44496883734,
       "totalPacketsSent": 11952594,
+      "aggregateBytesPerSecond": 1887512,
+      "aggregatePacketsPerSecond": 171538,
       "events": [
         {
           "attackStartTime": "2015-08-17T15:54:11.0Z",
@@ -68,6 +70,8 @@
       "Longitude": -122.0840,
       "totalBytesSent": 397700465372,
       "totalPacketsSent": 4034801,
+      "aggregateBytesPerSecond": 8533525,
+      "aggregatePacketsPerSecond": 832882,
       "events": [
         {
           "attackStartTime": "2015-08-17T22:35:49Z",

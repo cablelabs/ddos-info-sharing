@@ -81,6 +81,14 @@
                     "description": "The total number of packets sent by this IP address among all events.",
                     "type": "integer"
                 },
+                "aggregateBytesPerSecond": {
+                    "description": "The sum of the 'peakBPS' fields across all events for this IP address.",
+                    "type": "integer"
+                },
+                "aggregatePacketsPerSecond": {
+                    "description": "The sum of the 'peakPPS' fields across all events for this IP address.",
+                    "type": "integer"
+                },
                 "events": {
                     "description": "A list of attack events that originated from this IP address.",
                     "type": "array",
@@ -120,8 +128,11 @@
                             "DNS",
                             "DNS Amplification",
                             "IP Fragmentation",
+                            "IP Private",
                             "ICMP",
+                            "MS SQL RS Amplification",
                             "NTP Amplification",
+                            "SNMP Amplification",
                             "SSDP Amplification",
                             "TCP NULL",
                             "TCP RST",
@@ -129,7 +140,8 @@
                             "Total Traffic",
                             "UDP"
                         ]
-                    }
+                    },
+                    "minItems": 1
                 },
                 "totalBytesSent": {
                     "description": "The total number of bytes that came during this event.",
